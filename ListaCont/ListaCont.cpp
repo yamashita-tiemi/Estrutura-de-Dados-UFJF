@@ -168,6 +168,4 @@ void ListaCont::insereValores(int tam, int vet2[])
     {
         cout << "ERRO: Vetor Cheio!" << endl;
     }
-    
-    
 }
