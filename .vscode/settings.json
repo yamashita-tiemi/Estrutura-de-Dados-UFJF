@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.embeddedhtml": "html",
         "iostream": "cpp",
         "tuple": "cpp",
         "variant": "cpp",
@@ -7,6 +8,7 @@
         "istream": "cpp",
         "locale": "cpp",
         "memory": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "new": "cpp"
     }
 }
