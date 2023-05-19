@@ -27,6 +27,8 @@ public:
     int buscaMaior(int val);
     void limpar();
     void insereValores(int tam,int vet[]);
+
+    bool aumentaCapacidade(int novoMax);
 };
 
 #endif // LISTACONT_H_INCLUDED

@@ -130,7 +130,7 @@ void ListaCont::imprime()
 
 int ListaCont::numNos()
 {
-    return n;
+    return max;
 }
 
 int ListaCont::buscaMaior(int val)
@@ -169,3 +169,32 @@ void ListaCont::insereValores(int tam, int vet2[])
         cout << "ERRO: Vetor Cheio!" << endl;
     }
 }
+
+
+bool ListaCont::aumentaCapacidade(int novoMax)
+{
+    if (novoMax > max)
+    {
+        int *aux = new int [n];
+        
+        for (int i = 0; i < n; i++)
+        {
+            aux[i] = vet[i];
+        }
+
+        vet = new int [novoMax];
+
+        for (int i = 0; i < n; i++)
+        {
+            vet[i] = aux[i];
+        }
+
+        max = novoMax;
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+

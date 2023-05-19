@@ -10,7 +10,7 @@ using namespace std;
 
 int main()
 {
-    ListaCont l(10);
+    ListaCont l(5);
 
     l.insereFinal(24);
     l.insereFinal(3);
@@ -20,6 +20,14 @@ int main()
 
     l.imprime();
     cout << "Num de nos: " << l.numNos() << endl;
+
+    cout << "aumenta?"<< l.aumentaCapacidade(7) << endl;
+    cout << "Num de nos 2: " << l.numNos() << endl;
+    l.imprime();
+
+    l.insereFinal(3);
+    l.insereFinal(4);
+    l.imprime();
 
     int m = 20;
     cout << "Indice do maior q " << m << ": "<< l.buscaMaior(m) << endl;
