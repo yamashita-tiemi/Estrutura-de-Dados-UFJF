@@ -242,7 +242,7 @@ ListaEncad* ListaEncad::partir(int x)
 
 // void ListaEncad::insereOrdenado(int val)
 // {
-//     No* p = new No();
+//     No* novo = new No();
 //     No* t;
 //     No* aux;
 
@@ -259,20 +259,18 @@ ListaEncad* ListaEncad::partir(int x)
 //             }
             
 //         }
-//         p->setInfo(val);
-//         p->setProx(t);
+//         novo->setInfo(val);
+//         novo->setProx(t);
 //         aux->setProx(p);
 
 //         n++;
 //     }
 //     else
 //     {
-//         p->setInfo(val);
-//         p->setProx(NULL);
-//         primeiro = p;
+//         novo->setInfo(val);
+//         novo->setProx(NULL);
+//         primeiro = novo;
 //         ultimo = primeiro;
 //         n++;
 //     }
-    
-    
 // }
