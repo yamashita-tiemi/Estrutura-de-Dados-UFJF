@@ -199,7 +199,6 @@ ListaDupla* ListaDupla::partir(int x)
             {
                 t = p->getAnt();
                 t->setProx(NULL);
-                // ultimo = t;
 
                 nl->primeiro = p;
                 nl->primeiro->setAnt(NULL);
@@ -240,7 +239,7 @@ void ListaDupla::removeOcorrencias(int val)
                 t->setProx(u);
                 u->setAnt(t);
 
-                p = p->getProx();
+                // p = p->getProx();     pula um, errado
                 n = n - 1;
             }
             p = p->getProx();

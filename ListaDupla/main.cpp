@@ -54,23 +54,24 @@ int main()
     for (int i = 0; i < 5; i++)
     {
         l2.insereInicio(i);
+        l2.insereInicio(i);
     }
     cout << "Lista 2: " << endl;
     l2.imprime();
     
-    l.concatena(&l2);
+    // l.concatena(&l2);
     cout << "Lista concatenada: " << endl;
-    l.imprime();
+    l.concatena(&l2)->imprime();
     cout << "Num Nos: " << l.numNos() << endl;
 
-    cout << "Lista partida: " << endl;
-    l.partir(4)->imprime();
-    cout << "Num Nos partida: " << l.numNos() << endl;
-    l.imprime();
-
-    // l.removeOcorrencias(1);
-    // cout << "Lista sem ocorrencias: " << endl;
+    // cout << "Lista partida: " << endl;
+    // l.partir(4)->imprime();
+    // cout << "Num Nos partida: " << l.numNos() << endl;
     // l.imprime();
+
+    l.removeOcorrencias(1);
+    cout << "Lista sem ocorrencias: " << endl;
+    l.imprime();
 
 
     bool existe = l.busca(20);
