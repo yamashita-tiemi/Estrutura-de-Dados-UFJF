@@ -60,19 +60,19 @@ int main()
 
 
 //  --------- Lista Ordenada ----------------
-    // ListaEncad l_ord;
-    // int num = 5;
-    // cout << "Inserindo valores em l_ord: ";
-    // for(int i = 1; i <= num; i++)
-    // {
-    //     int val =  numAleatorio(0, 50); /// cria um valor aleat�rio entre 0 e 50
-    //     cout << val << ", ";
-    //     l_ord.insereOrdenado(val);
-    // }
-    // cout << endl;
+    ListaEncad l_ord;
+    int num = 5;
+    cout << "Inserindo valores em l_ord: ";
+    for(int i = 1; i <= num; i++)
+    {
+        int val =  numAleatorio(0, 50); /// cria um valor aleat�rio entre 0 e 50
+        cout << val << ", ";
+        l_ord.insereOrdenado(val);
+    }
+    cout << endl;
 
-    // cout << "Imprime l_ord: " << endl;
-    // l_ord.imprime();
+    cout << "Imprime l_ord: " << endl;
+    l_ord.imprime();
     
     
 

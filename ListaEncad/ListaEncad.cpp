@@ -274,3 +274,53 @@ ListaEncad* ListaEncad::partir(int x)
 //         n++;
 //     }
 // }
+
+void ListaEncad::insereOrdenado(int val)
+{
+    No *novo = new No();
+    novo->setInfo(val);
+
+    No *p;
+    No *t;
+
+    if (primeiro != NULL)
+    {
+        p = primeiro;
+
+        if (p->getInfo() >= val)
+        {
+            novo->setProx(p);
+            primeiro = novo;
+            n++;
+        }
+        else
+        {
+            while (p->getInfo() < val)
+            {
+                t = p;
+                if (p->getProx() == NULL)
+                {
+                    p->setProx(novo);
+                    novo->setProx(NULL);
+                    ultimo = novo;
+                    n++;
+                }
+                else
+                {
+                    p = p->getProx();
+                }
+                
+            }
+            t->setProx(novo);
+            novo->setProx(p);
+            n++;
+        }
+    }
+    else
+    {
+        novo->setProx(NULL);
+        primeiro = novo;
+        ultimo = novo;
+        n++;
+    }
+}
