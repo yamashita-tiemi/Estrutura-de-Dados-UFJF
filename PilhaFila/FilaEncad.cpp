@@ -74,3 +74,21 @@ int FilaEncad::desenfileira()
         exit(1);
     }
 }
+
+void FilaEncad::imprime()
+{
+    No *p = inicio;
+    if (!vazia())
+    {
+        while (p != NULL)
+        {
+            cout << p->getInfo() << " -> ";
+            p = p->getProx();
+        }
+        cout << endl;
+    }
+    else
+    {
+        cout << "Lista vazia!"<< endl;
+    }
+}
