@@ -173,8 +173,12 @@ int ListaEncad::buscaMaior(int val)
         return -1;
     }
     else
+    {
         cout << "ERRO: lista vazia!" << endl;
+        return -1;
+    }
 }
+
 void ListaEncad::limpar()
 {
     primeiro = NULL;
@@ -195,7 +199,10 @@ float ListaEncad::calculaMedia()
         return total/n;
     }
     else
+    {
         cout << "ERRO: lista vazia!" << endl;
+        return -1;
+    }
 }
 
 void ListaEncad::concatena(ListaEncad *l2)
@@ -212,6 +219,7 @@ void ListaEncad::concatena(ListaEncad *l2)
     else
         cout << "ERRO: lista 2 vazia!" << endl;
 }
+
 ListaEncad* ListaEncad::partir(int x)
 {
     ListaEncad* nl = new ListaEncad();
@@ -289,24 +297,28 @@ void ListaEncad::insereOrdenado(int val)
 
         if (p->getInfo() >= val)
         {
-            novo->setProx(p);
-            primeiro = novo;
-            n++;
+            // novo->setProx(p);
+            // primeiro = novo;
+            // n++;
+            insereInicio(val);
         }
         else
         {
             while (p->getInfo() < val)
             {
-                t = p;
                 if (p->getProx() == NULL)
                 {
-                    p->setProx(novo);
-                    novo->setProx(NULL);
-                    ultimo = novo;
-                    n++;
+                    // p->setProx(novo);
+                    // novo->setProx(NULL);
+                    // ultimo = novo;
+                    // n++;
+                    // return;
+                    insereFinal(val);
+                    return;
                 }
                 else
                 {
+                    t = p;
                     p = p->getProx();
                 }
                 
@@ -324,3 +336,40 @@ void ListaEncad::insereOrdenado(int val)
         n++;
     }
 }
+
+// void ListaEncad::insereK(int k, int val)
+// {
+//     if (k == 0 || primeiro == NULL)
+//     {
+//         insereInicio(val);
+//     }
+//     else if (k == n || ultimo == NULL)
+//     {
+//         insereFinal(val);
+//     }
+//     else
+//     {
+//         No *novo = new No();
+//         novo->setInfo(val);
+
+//         No *p = primeiro;
+//         No *t;
+//         int i = 0;
+
+//         while (p != NULL)
+//         {
+//             if (i == k)
+//             {
+//                 t->setProx(novo);
+//                 novo->setProx(p);
+//                 n++;
+//                 break;
+//             }
+//             else
+//             {
+//                 t = p;
+//                 p = p->getProx();
+//             }
+//         }   
+//     }
+// }

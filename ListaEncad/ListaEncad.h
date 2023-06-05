@@ -15,6 +15,9 @@ public:
     void removeInicio();        /// remove o primeiro No da lista
     void removeFinal();         /// remove o �ltimo No da lista
 
+    void insereK(int k, int val);
+    void removeK(int k);
+
     void imprime();
     int numNos();
     int buscaMaior(int val);
