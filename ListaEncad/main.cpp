@@ -58,6 +58,21 @@ int main()
     cout << "Segunda metade da lista: " << endl;
     l.partir((NumNos+NumNos2)/2)->imprime();
 
+    cout << "Primeira metade da lista: " << endl;
+    l.imprime();
+    cout << "Numeros de Nos: " << l.numNos() << endl;
+
+    cout << "Insere val=99 na posicao 4" << endl;
+    l.insereK(4, 99);
+
+    l.imprime();
+    cout << "Numeros de Nos: " << l.numNos() << endl;
+
+    cout << "Deleta na posicao 6" << endl;
+    l.removeK(6);
+
+    l.imprime();
+
 
 //  --------- Lista Ordenada ----------------
     ListaEncad l_ord;

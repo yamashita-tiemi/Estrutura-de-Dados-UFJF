@@ -242,6 +242,8 @@ ListaEncad* ListaEncad::partir(int x)
             t = p;
             p = p->getProx();
         }
+        n = n - x;
+        nl->n = x;
         return nl;
     }
     else
@@ -337,39 +339,85 @@ void ListaEncad::insereOrdenado(int val)
     }
 }
 
-// void ListaEncad::insereK(int k, int val)
-// {
-//     if (k == 0 || primeiro == NULL)
-//     {
-//         insereInicio(val);
-//     }
-//     else if (k == n || ultimo == NULL)
-//     {
-//         insereFinal(val);
-//     }
-//     else
-//     {
-//         No *novo = new No();
-//         novo->setInfo(val);
+void ListaEncad::insereK(int k, int val)
+{
+    if (k == 0 || primeiro == NULL)
+    {
+        insereInicio(val);
+    }
+    else if (k == n || ultimo == NULL)
+    {
+        insereFinal(val);
+    }
+    else if (k>0 && k<n)
+    {
+        No *novo = new No();
+        novo->setInfo(val);
 
-//         No *p = primeiro;
-//         No *t;
-//         int i = 0;
+        No *p = primeiro;
+        No *t;
+        int i = 1;
 
-//         while (p != NULL)
-//         {
-//             if (i == k)
-//             {
-//                 t->setProx(novo);
-//                 novo->setProx(p);
-//                 n++;
-//                 break;
-//             }
-//             else
-//             {
-//                 t = p;
-//                 p = p->getProx();
-//             }
-//         }   
-//     }
-// }
+        while (p != NULL)
+        {
+            // cout << i << " ";
+            if (i == k)
+            {
+                t->setProx(novo);
+                novo->setProx(p);
+                n++;
+                break;
+            }
+            else
+            {
+                t = p;
+                p = p->getProx();
+                i++;
+            }
+        }
+    }
+    else
+    {
+        cout << "Erro: indice invalido" << endl;
+    }    
+}
+
+void ListaEncad::removeK(int k)
+{
+    if (k == 0)
+    {
+        removeInicio();
+    }
+    else if (k == n)
+    {
+        removeFinal();
+    }
+    else if (k>0 && k<n)
+    {
+        No *p = primeiro;
+        No *t;
+        int i = 1;
+
+        while (p != NULL)
+        {
+            if (i == k)
+            {
+                t->setProx(p->getProx());
+                p->setProx(NULL);
+                // delete p;
+                n--;
+                break;
+            }
+            else
+            {
+                t = p;
+                p = p->getProx();
+                i++;
+            }
+        }
+    }
+    else
+    {
+        cout << "Erro: indice invalido" << endl;
+    }   
+}
