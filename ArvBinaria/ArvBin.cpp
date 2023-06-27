@@ -262,29 +262,249 @@ int ArvBin::auxContaFolhaImpar(NoArv *p)
     }
 }
     
-// void ArvBin::imprimeNivel(int k)
-// {
-//     auxImpNivel(raiz, 0, k);
-// }
-// void ArvBin::auxImpNivel(NoArv *p, int atual, int k)
-// {
-//     if (atual == k)
-//     {
-//         cout << p->getInfo() << " ";
-//     }
+void ArvBin::imprimeNivel(int k)
+{
+    auxImpNivel(raiz, 0, k);
+}
+void ArvBin::auxImpNivel(NoArv *p, int atual, int k)
+{
+    if (p != NULL)
+    {
+        if (atual == k)
+            cout << p->getInfo() << " ";
+        else
+        {
+            auxImpNivel(p->getEsq(), atual+1, k);
+            auxImpNivel(p->getDir(), atual+1, k);
+        }
+        
+    } 
+}
+
+float ArvBin::mediaNivel(int k)
+{
+    float total = 0;
+    int numNos = 0;
+    auxMediaNivel(raiz, 0, k, &total, &numNos);
+
+    // cout << total << " - " << numNos << endl;
+    return total/numNos;
+}
+void ArvBin::auxMediaNivel(NoArv *p, int atual, int k, float *total, int *cont)
+{
+    if (p != NULL)
+    {
+        if (atual == k)
+        {
+            *total += p->getInfo();
+            (*cont)++;
+        }
+        else
+        {
+            auxMediaNivel(p->getEsq(), atual+1, k, total, cont);
+            auxMediaNivel(p->getDir(), atual+1, k, total, cont);
+        }
+    } 
+}
+
+int ArvBin::min()
+{
+    if (vazia())
+    {
+        cout << "Arvore vazia" << endl;
+        exit(1);
+    }
+    else
+    {
+        int min = getRaiz();
+        auxMin(raiz, &min);
+        return min;
+    }
+    // int e = minSubArvore(raiz->getEsq());
+    // int d = minSubArvore(raiz->getDir());
+    // if (d < e)
+    // {
+    //     e = d;
+    // }
+    // if (e < getRaiz())
+    // {
+    //     return e;
+    // }
+    // else
+    //     return getRaiz();
+}
+int ArvBin::auxMin(NoArv *p, int *min)
+{
+    if (p == NULL)
+        return 0;
+
+    else
+    {
+        if (p->getInfo() < *min)
+            *min = p->getInfo();
+
+        auxMin(p->getEsq(), min);
+        auxMin(p->getDir(), min);
+
+        return *min;
+    } 
+}
+
+int ArvBin::max()
+{
+    if (vazia())
+    {
+        cout << "Arvore vazia" << endl;
+        exit(1);
+    }
+    else
+    {
+        int max = getRaiz();
+        auxMax(raiz, &max);
+        return max;
+    }
+}
+int ArvBin::auxMax(NoArv *p, int *max)
+{
+    if (p == NULL)
+        return 0;
+
+    else
+    {
+        if (p->getInfo() > *max)
+            *max = p->getInfo();
+
+        auxMax(p->getEsq(), max);
+        auxMax(p->getDir(), max);
+
+        return *max;
+    } 
+}
+
+void ArvBin::inverte()
+{
+    auxInverte(raiz);
+}
+void ArvBin::auxInverte(NoArv *p)
+{
+    if (p != NULL)
+    {
+        auxInverte(p->getEsq());
+        auxInverte(p->getDir());
+        if (p->getEsq() != NULL && p->getDir() != NULL)
+        {
+            NoArv *auxEsq;
+            auxEsq = p->getEsq();
+
+            p->setEsq(p->getDir());
+            p->setDir(auxEsq);
+        }
+    }
+}
+
+int ArvBin::noMaisEsquerda()
+{
+    if (vazia())
+    {
+        cout << "Arvore vazia" << endl;
+        exit(1);
+    }
+    else
+        return auxNoMaisEsquerda(raiz);
+}
+int ArvBin::auxNoMaisEsquerda(NoArv *p)
+{
+    if (p->getEsq() == NULL)
+    {
+        return p->getInfo();
+    }
+    return auxNoMaisEsquerda(p->getEsq());
+}
     
-// }
-    // float ArvBin::mediaNivel(int k);
-    // int ArvBin::min();
-    // int ArvBin::max();
-    // void ArvBin::inverte();
-    // void ArvBin::auxInverte(NoArv *p);
-    // int ArvBin::noMaisEsquerda();
-    // int ArvBin::noMaisDireita();
-    // int ArvBin::minSubArvore(NoArv *p);
-    // int ArvBin::maxSubArvore(NoArv *p);
-    // bool ArvBin::ehABB();
-    // bool ArvBin::auxEhABB(NoArv *p);
+int ArvBin::noMaisDireita()
+{
+    if (vazia())
+    {
+        cout << "Arvore vazia" << endl;
+        exit(1);
+    }
+    else
+        return auxNoMaisDireita(raiz);
+}
+int ArvBin::auxNoMaisDireita(NoArv *p)
+{
+    if (p->getDir() == NULL)
+    {
+        return p->getInfo();
+    }
+    return auxNoMaisDireita(p->getDir());
+}
+
+int ArvBin::minSubArvore(NoArv *p)
+{
+    if (vazia())
+    {
+        cout << "Arvore vazia" << endl;
+        exit(1);
+    }
+    else
+    {
+        int min = p->getInfo();
+        auxMin(p, &min);
+        return min;
+    }
+}
+
+int ArvBin::maxSubArvore(NoArv *p)
+{
+    if (vazia())
+    {
+        cout << "Arvore vazia" << endl;
+        exit(1);
+    }
+    else
+    {
+        int max = p->getInfo();
+        auxMax(p, &max);
+        return max;
+    }
+}
+
+bool ArvBin::ehABB()
+{
+    if (vazia())
+    {
+        cout << "Arvore vazia" << endl;
+        return true;
+    }
+    else
+        return auxEhABB(raiz);
+}
+bool ArvBin::auxEhABB(NoArv *p)
+{
+    if (p == NULL)
+    {
+        return true;
+    }
+    else
+    {
+        int maxEsq = maxSubArvore(p->getEsq());
+        int minDir = minSubArvore(p->getDir());
+
+        if (maxEsq > p->getInfo())
+        {
+            return false;
+        }
+        if (minDir < p->getInfo())
+        {
+            return false;
+        }
+        
+        return auxEhABB(p->getEsq()) && auxEhABB(p->getDir());
+    }
+    
+    
+}
 
 void ArvBin::imprime()
 {
@@ -297,8 +517,8 @@ void ArvBin::auxImprime(NoArv* p, int nivel)
 {
 	if (p != NULL)
 	{
-		cout << "Nivel:(" << nivel << ") " << p->getInfo() << endl;
 		auxImprime(p->getEsq(), nivel + 1);
+		cout << "Nivel:(" << nivel << ") " << p->getInfo() << endl;
 		auxImprime(p->getDir(), nivel + 1);
 	}
 }

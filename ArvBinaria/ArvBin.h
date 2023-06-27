@@ -22,17 +22,15 @@ class ArvBin
     int contaImpar();
     int contaFolhaImpar();
     void imprimeNivel(int k);
-    // float mediaNivel(int k);
-    // int min();
-    // int max();
-    // void inverte();
-    // void auxInverte(NoArv *p);
-    // int noMaisEsquerda();
-    // int noMaisDireita();
-    // int minSubArvore(NoArv *p);
-    // int maxSubArvore(NoArv *p);
-    // bool ehABB();
-    // bool auxEhABB(NoArv *p);
+    float mediaNivel(int k);
+    int min();
+    int max();
+    void inverte();
+    int noMaisEsquerda();
+    int noMaisDireita();
+    int minSubArvore(NoArv *p);
+    int maxSubArvore(NoArv *p);
+    bool ehABB();
 
     void imprime();
 
@@ -43,17 +41,24 @@ class ArvBin
     bool auxBusca(NoArv *p, int x);
     void auxPreOrdem(NoArv *p);
     NoArv* auxMontaArvore();
-    void auxImpNivel(NoArv *p, int atual, int k);
-    void auxInverte(NoArv * p);
     NoArv* auxInsere(NoArv *p, int x);
 
-    void auxImprime(NoArv* r, int x);
 
     int auxContaNos(NoArv *p);
     int auxContaNosFolhas(NoArv *p);
     int auxAltura(NoArv *p);
     int auxContaImpar(NoArv *p);
     int auxContaFolhaImpar(NoArv *p);
+    void auxImpNivel(NoArv *p, int atual, int k);
+    void auxMediaNivel(NoArv *p, int atual, int k, float *total, int *cont);
+    int auxMin(NoArv *p, int *min);
+    int auxMax(NoArv *p, int *max);
+    void auxInverte(NoArv *p);
+    int auxNoMaisEsquerda(NoArv *p);
+    int auxNoMaisDireita(NoArv *p);
+    bool auxEhABB(NoArv *p);
+    
+    void auxImprime(NoArv* r, int x);
 };
 
 #endif // ARVBIN_H_INCLUDED
