@@ -282,3 +282,119 @@ NoArv* ArvBinBusca::maiorSubArvEsq(NoArv *p)
         aux = aux->getDir();
     return aux;
 }
+
+void ArvBinBusca::contaMaiores(int val)
+{
+    auxContaMaiores(raiz, val);
+}
+
+void ArvBinBusca::auxContaMaiores(NoArv *p,int val)
+{
+    if (p != NULL)
+    {
+        if (p->getInfo() > val)
+        {
+            cout << p->getInfo() << endl;
+            auxContaMaiores(p->getEsq(), val);
+            cout << p->getInfo() << endl; //imprime em ordem crescente
+            auxContaMaiores(p->getDir(), val);
+        }
+        else
+        {
+            auxContaMaiores(p->getDir(), val);
+        }
+    }
+}
+
+void ArvBinBusca::auxContaMenores(NoArv *p,int val)
+{
+    if (p != NULL)
+    {
+        if (p->getInfo() < val)
+        {
+            cout << p->getInfo() << endl;
+            auxContaMenores(p->getEsq(), val);
+            cout << p->getInfo() << endl; //imprime em ordem crescente
+            auxContaMenores(p->getDir(), val);
+        }
+        else
+        {
+            auxContaMenores(p->getEsq(), val);
+        }
+    }
+}
+
+// void ArvBinBusca::auxContaMenores(NoArv *p,int a, int b)
+// {
+//     if (p != NULL)
+//     {
+//         if (p->getInfo() < val)
+//         {
+//             cout << p->getInfo() << endl;
+//             auxContaMenores(p->getEsq(), val);
+//             cout << p->getInfo() << endl; //imprime em ordem crescente
+//             auxContaMenores(p->getDir(), val);
+//         }
+//         else
+//         {
+//             auxContaMenores(p->getEsq(), val);
+//         }
+//     }
+// }
+
+void ArvBinBusca::contaPreencheVet(NoArv *p,int a, int b)
+{
+    // int n = auxContaNos(raiz);
+    int n = 10;
+    int *vet = new int[n];
+    // int *i = new int;
+    // *i = 0;
+    int i = 0;
+
+    auxContaPreencheVet(raiz,a,b,vet,&i);
+}
+
+void ArvBinBusca::auxContaPreencheVet(NoArv *p,int a, int b, int vet[], int *i)
+{
+    if (p != NULL)
+    {
+        if (p->getInfo() >= a && p->getInfo() <= b)
+        {
+            auxContaPreencheVet(p->getEsq(),a,b,vet,i);
+            vet[*i] = p->getInfo();
+            (*i)++;
+            auxContaPreencheVet(p->getDir(),a,b,vet,i);
+        }
+        else if (p->getInfo() < a)
+        {
+            auxContaPreencheVet(p->getDir(),a,b,vet,i);
+        }
+        else //valor do no é maior q b
+        {
+            auxContaPreencheVet(p->getEsq(),a,b,vet,i);
+        }
+    }
+}
+
+void ArvBinBusca::contaParesImparesCaminho(int x, int *pares, int *impares)
+{
+    *pares = *impares = 0;
+
+    NoArv *p = raiz;
+    while(p != NULL)
+    {
+        if (p->getInfo()%2 == 0)
+            (*pares)++;
+        else
+            (*impares)++;
+        
+
+        if(x == p->getInfo())
+            break;
+        else if(x > p->getInfo())
+            p = p->getDir();
+        else
+            p = p->getEsq();
+    }
+}
+

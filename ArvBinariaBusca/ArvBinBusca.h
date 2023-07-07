@@ -20,6 +20,10 @@ public:
     void removeMenor();
     int contaParesCaminho(int x);
 
+    void contaMaiores(int val);
+    void contaPreencheVet(NoArv *p,int a, int b);
+    void contaParesImparesCaminho(int x, int *pares, int *impares);
+
 private:
     NoArv* raiz; // ponteiro para o No raiz da �rvore
     bool auxBusca(NoArv *p, int val);
@@ -34,6 +38,10 @@ private:
     NoArv* maiorSubArvEsq(NoArv *p);
     int auxMaior(NoArv *p);
     int auxMenor(NoArv *p);
+
+    void auxContaMaiores(NoArv *p,int val);
+    void auxContaMenores(NoArv *p,int val);
+    void auxContaPreencheVet(NoArv *p,int a, int b,int vet[],int *i);
 };
 
 #endif // ARVBINBUSCA_H_INCLUDED
