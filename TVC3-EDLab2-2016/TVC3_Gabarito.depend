@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1457151635 source:d:\dropbox\edlab2\custodio\tvc-2015.3\tvc3\turmaa\tvc3_gabarito\arvbinbusca.cpp
+	"ArvBinBusca.h"
+
+1457151607 d:\dropbox\edlab2\custodio\tvc-2015.3\tvc3\turmaa\tvc3_gabarito\arvbinbusca.h
+	<iostream>
+	<cstdlib>
+	"No.h"
+
+1457151000 d:\dropbox\edlab2\custodio\tvc-2015.3\tvc3\turmaa\tvc3_gabarito\no.h
+
+1457151748 source:d:\dropbox\edlab2\custodio\tvc-2015.3\tvc3\turmaa\tvc3_gabarito\main.cpp
+	<iostream>
+	"ArvBinBusca.h"
+
