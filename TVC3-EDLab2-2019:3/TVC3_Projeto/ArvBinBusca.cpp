@@ -229,37 +229,37 @@ void ArvBinBusca::addValores2()
     this->cria(40, this, &a1);
 }
 
-// void ArvBinBusca::imprime()
-// {
-//     auxImprime(raiz);
-//     cout << endl;
-// }
-
-// void ArvBinBusca::auxImprime(NoArv *p)
-// {
-//     if(p != NULL)
-//     {
-//         auxImprime(p->getEsq());
-//         cout << p->getInfo() << " ";
-//         auxImprime(p->getDir());
-//     }
-// }
-
-
 void ArvBinBusca::imprime()
 {
-    imprimePorNivel(raiz, 0);
+    auxImprime(raiz);
+    cout << endl;
 }
 
-void ArvBinBusca::imprimePorNivel(NoArv *p, int nivel)
+void ArvBinBusca::auxImprime(NoArv *p)
 {
     if(p != NULL)
     {
-        cout << "(" << nivel << ")";
-        for(int i = 1; i <= nivel; i++)
-            cout << "--";
-        cout << p->getInfo() << endl;
-        imprimePorNivel(p->getEsq(), nivel+1);
-        imprimePorNivel(p->getDir(), nivel+1);
+        auxImprime(p->getEsq());
+        cout << p->getInfo() << " ";
+        auxImprime(p->getDir());
     }
 }
+
+
+// void ArvBinBusca::imprime()
+// {
+//     imprimePorNivel(raiz, 0);
+// }
+
+// void ArvBinBusca::imprimePorNivel(NoArv *p, int nivel)
+// {
+//     if(p != NULL)
+//     {
+//         cout << "(" << nivel << ")";
+//         for(int i = 1; i <= nivel; i++)
+//             cout << "--";
+//         cout << p->getInfo() << endl;
+//         imprimePorNivel(p->getEsq(), nivel+1);
+//         imprimePorNivel(p->getDir(), nivel+1);
+//     }
+// }

@@ -8,34 +8,18 @@ int i = 0;
 
 void preencheABB(ArvBinBusca *a, int p, int q)
 {
-    int meio = (p+q)/2;
-
-    // if (meio == p || meio == q)
-    // {
-    //     cout << p << " - " << q << " = " << meio << " igual " << i << endl;
-    //     return;
-    // }
-
-    // a->insere(meio);
-    // cout << p << " - " << q << " = " << meio << " - " << i << endl;
-    // i++;
-
-    // preencheABB(a, p, meio);
-    // preencheABB(a, meio, q);
-
-    if (meio != p && meio != q)
+    if (p == q)
     {
-        cout << p << " - " << q << " = " << meio << " igual " << i << endl;
-        i++;
-        a->insere(meio);
-        preencheABB(a, p, meio);
-        preencheABB(a, meio, q);
+        a->insere(p);
     }
     else
     {
-        return;
+        int meio = (p+q)/2;
+        
+        a->insere(meio);
+        preencheABB(a, p, meio-1);
+        preencheABB(a, meio+1, q);
     }
-    
 }
 
 int main()
