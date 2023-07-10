@@ -119,6 +119,53 @@ void ArvBinBusca::insNaoRec(int val)
     }
 }
 
+
+
+// NoArv *valInsere(int val) { 
+//     NoArv *valor = new NoArv;
+//     valor->setInfo(val);
+//     valor->setDir(NULL);
+//     valor->setEsq(NULL);
+    
+//     return valor;
+// } 
+
+// void ArvBinBusca::insNaoRec(int val)
+// {
+//     NoArv *p = raiz; 
+
+//     if (raiz == NULL)
+//     {
+//         return;
+//     }
+    
+    
+//     if(p->getInfo()!=val) {
+//         while(p!=NULL && p->getInfo()!=val) {
+            
+//             if(p->getInfo() < val) { 
+//                 if(!p->getDir()) {
+//                     NoArv *inserir = valInsere(val);
+//                     p->setDir(inserir);
+//                     break;
+//                 } else {
+//                     cout<< p->getInfo() << ", ";
+//                     p = p->getDir();
+//                 }
+//             } else {
+//                 cout<<p->getInfo() << ", ";
+//                 if(!p->getEsq()) {
+//                     NoArv *inserir = valInsere(val);
+//                     p->setEsq(inserir);
+//                     break;
+//                 } else
+//                     p = p->getEsq();
+//             }
+//         }
+//     } else {
+//         cout << "O valor ja existe na arvore!!" << endl;
+//     }
+// }
 //-Q2
 
 // ----------------------------------------------------------------------------
